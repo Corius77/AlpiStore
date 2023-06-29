@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Orders{% endblock title %}
+
+{% block content %}
+        <div>
+            {% for order in orders %}
+                <div class="mb-10">
+                    <hr class="h-px my-4 bg-gray-700 border-0 dark:bg-gray-700">
+                    <div class="flex justify-center"> 
+                        <div class="flex flex-col">
+                            <p class="font-bold text-xl text-center mb-2">Order: {{order.id}}</p>   
+                            {% for orderitem in orderitems %}
+                            <p>Product: {{orderitem.product.name}} </p>
+                            <p>Quantity: {{orderitem.quantity}} </p>
+                            <p>Size: {{orderitem.size.shortcut}} </p>
+                            {% endfor %}
+                            <p>{{order.shipping_details.address}}</p>
+                        </div>
+                    </div>
+                    <hr class="h-px my-4 bg-gray-700 border-0 dark:bg-gray-700">
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}

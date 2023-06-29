@@ -1,0 +1,122 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Products{% endblock title %}
+
+{% block content %}
+        <div class="py-10 bg-zinc-200">
+            <div class="flex justify-center">
+                <div class="grid grid-cols-4 gap-10">
+                    <div>
+                        <button id="category-button" class="text-lg font-bold text-white bg-zinc-400 rounded-xl button-size shadow-md">Category</button>
+                        <div id="category-options" class="bg-white rounded-lg shadow-md" style="display: none;">
+                            <form method="get">
+                                <div class="flex justify-center">
+                                    <div class="flex flex-col mt-5">
+                                        {% for category in categories %}
+                                        <div>
+                                            <input type="checkbox" id="{{ category.name }}" value={{ category.id }} name="categories" {% if forloop.first %}checked{% endif %}>
+                                            <label for="{{ category.name }}">{{ category.name }}</label>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="flex justify-end">
+                                    <input class="px-1 flex ml-auto font-semibold mr-2 mt-2 mb-2 text-white bg-zinc-300 rounded-md hover:bg-zinc-400" type="submit" value="Apply">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button id="colour-button" class="text-lg font-bold text-white bg-zinc-400 rounded-xl button-size shadow-md">Color</button>
+                        <div id="colour-options" class="bg-white rounded-lg shadow-md" style="display: none;">
+                            <form method="get">
+                                <div class="flex justify-center">
+                                    <div class="flex flex-col mt-5">
+                                        {% for color in colors %}
+                                        <div>
+                                            <input type="checkbox" id="{{ color.name }}" value={{ color.id }} name="colors" {% if forloop.first %}checked{% endif %}>
+                                            <label for="{{ color.name }}">{{ color.name }}</label>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="flex justify-end">
+                                    <input class="px-1 flex ml-auto font-semibold mr-2 mt-2 mb-2 text-white bg-zinc-300 rounded-md hover:bg-zinc-400" type="submit" value="Apply">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button id="size-button" class="text-lg font-bold text-white bg-zinc-400 rounded-xl button-size shadow-md">Size</button>
+                        <div id="size-options" class="bg-white rounded-lg shadow-md" style="display: none;">
+                            <form method="get">
+                                <div class="flex justify-center">
+                                    <div class="flex flex-col mt-5">
+                                        {% for size in sizes %}
+                                        <div>
+                                            <input type="checkbox" id="{{ size.shortcut }}" name="sizes" value="{{ size.id }}" {% if forloop.first %}checked{% endif %}>
+                                            <label for="{{ size.shortcut }}">{{ size.name }}</label>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="flex justify-end">
+                                    <input class="px-1 flex ml-auto font-semibold mr-2 mt-2 mb-2 text-white bg-zinc-300 rounded-md hover:bg-zinc-400" type="submit" value="Apply">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button id="pricerange-button" class="text-lg font-bold text-white bg-zinc-400 rounded-xl button-size shadow-md">Price range</button>
+                        <div id="pricerange-options" class="bg-white rounded-lg shadow-md" style="display: none;">
+                            <form method="get">
+                                <div class="flex justify-center">
+                                    <div class="flex flex-col gap-5">
+                                        <div class="mt-5">
+                                            <p class="text-zinc-600">Min Price</p>
+                                            <div class="flex gap-1">
+                                                <input id="min_input" type="range" class="transparent h-1.5 w-full appearance-none rounded-lg border-transparent bg-zinc-300" name="min_price" maxlength="4" size="3" value="{{ min_price }}" min="{{ min_price }}" max="{{ max_price }}" required>
+                                                <output id="min_value"></output>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="text-zinc-600">Max Price</p>
+                                            <div class="flex gap-1">
+                                                <input id="max_input" type="range" class="transparent h-1.5 w-full appearance-none rounded-lg border-transparent bg-zinc-300" name="max_price" maxlength="4" size="3" value="{{ max_price }}" min="{{ min_price }}" max="{{ max_price }}" required>
+                                                <output id="max_value"></output>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-end">
+                                    <input class="px-1 flex ml-auto font-semibold mr-2 mt-2 mb-2 text-white bg-zinc-300 rounded-md hover:bg-zinc-400" type="submit" value="Apply">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center mt-20 mb-20">
+            <div class="grid grid-cols-4 gap-10">
+                {% for product in products %}
+                <div>
+                    <a href="{% url 'product:detail' product.id %}">
+                        <img src="{{ product.image.url }}" class="shadow-xl fixed-image">
+                    </a>
+                    <p class="text-lg">{{ product.name }}</p>
+                    <p class="font-bold text-gray-700">{{ product.currency.symbol }}{{ product.price }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <script type="text/javascript" src="{% static 'js/listButtons.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/pricerange.js' %}"></script>
+
+        <link rel="stylesheet" href="{% static 'css/list-buttons.css' %}">
+{% endblock%}

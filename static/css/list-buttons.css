@@ -1,0 +1,13 @@
+.button-size {
+    width: 254px !important;
+    height: 30px;
+}
+
+.category-dropdown .category-list {
+    display: block;
+  }
+  
+  .open .category-list {
+    display: none;
+  }
+  

@@ -1,0 +1,33 @@
+.container {
+    height: 500px;
+    box-shadow: 0 0 2px gray;
+    padding: 10px;
+    overflow: scroll; 
+  }
+  
+  .container::-webkit-scrollbar {
+    width: 5px;
+    height: 15px;
+  }
+  
+  .container::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 5px;
+  }
+
+  .container-l {
+    height: 865px;
+    box-shadow: 0 0 2px gray;
+    padding: 10px;
+    overflow: scroll; 
+  }
+  
+  .container-l::-webkit-scrollbar {
+    width: 5px;
+    height: 15px;
+  }
+  
+  .container-l::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 5px;
+  }

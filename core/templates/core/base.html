@@ -1,0 +1,109 @@
+<!doctype html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>{% block title %}{% endblock %} | AlpiStore</title>
+
+        <script type="text/javascript" src="{% static 'js/device.js' %}"></script>
+
+        <script src="https://www.paypal.com/sdk/js?client-id=Aanc7VYIVIcq40DRlwYH6ubdRXuivw4LbZddUniuIg8e3FHbnKkXYouhGlah3AK3RlQReC2f5T2NXDAQ"></script>
+
+        <script src="https://kit.fontawesome.com/4adaeba29d.js" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            function getCookie(name) {
+                var cookieArr = document.cookie.split(";");
+    
+                for(var i = 0; i < cookieArr.length; i++) {
+                    var cookiePair = cookieArr[i].split("=");
+    
+                    if(name == cookiePair[0].trim()) {
+                        return decodeURIComponent(cookiePair[1]);
+                    }
+                }
+    
+                return null;
+            }
+            var cart = JSON.parse(getCookie('cart'))
+    
+            if (cart == undefined){
+                cart = {}
+                console.log('Cart Created!', cart)
+                document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+            }
+            console.log('Cart:', cart)
+        </script>
+    </head>
+
+    <body>
+        <nav class="py-6 px-6 bg-black flex justify-center">
+            <div class="flex items-center space-x-6">
+                <img class="flex-1 text-lg font-semibold text-white pointer-events-none select-none" src="{% static 'images/AlpiLogo.png' %}" alt="logo" width="80" height="80" draggable="false">
+                <a href="{% url 'core:index' %}" class="text-lg font-semibold text-white hover:text-zinc-400">HOME</a>
+                <a href="{% url 'product:list' %}" class="text-lg font-semibold text-white hover:text-zinc-400">PRODUCTS</a>
+                <a href="{% url 'core:index' %}#footer" class="text-lg font-semibold text-white hover:text-zinc-400">ABOUT US</a>
+                <a href="{% url 'core:contact' %}" class="text-lg font-semibold text-white hover:text-zinc-400">CONTACT</a>
+                <div class="flex justify-between">
+                    <a href="{% url 'product:cart' %}" class="text-2xl font-semibold text-white hover:text-zinc-400">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                    {% if orderitems_count > 0 %}
+                    <div class="w-5 h-5 top-0 right-0 flex items-center justify-center rounded-full bg-red-600">
+                        <p class="text-center font-bold text-white text-xs">{{ orderitems_count }}</p>
+                    </div>
+                    {% else %}
+                    <div class="w-5 h-5 top-0 right-0 flex items-center justify-center rounded-full bg-red-600" style="display: none;">
+                        <p class="text-center font-bold text-white text-xs">{{ orderitems_count }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+
+            {% block content %}
+            {% endblock %}
+
+        <footer id="footer" class="bottom-0 w-full">
+            <div class="py-12 px-12 flex justify-between bg-black flex justify-center">
+                <div class="w-2/3">
+                    <h3 class="text-4xl font-bold text-white text-center mb-10">About us</h3>
+
+                    <p class="text-xl text-white">Alpimotive is build for motivating people and let them become the best version of themselves. And it stands for “Alpi” the name of the admin, “motive” for motivation.</p>
+                </div>
+
+                <div>
+                    <img class="flex-1 text-lg font-semibold text-white pointer-events-none mr-40 select-none" src="{% static 'images/AlpiLogo.png' %}" alt="logo" width="150" height="150" draggable="false">
+
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-lg font-semibold text-white hover:text-zinc-400"><i class="fa-solid fa-phone"></i> (08) 400 200</a></li>
+                        <li><a href="#" class="text-lg font-semibold text-white hover:text-zinc-400"><i class="fa-solid fa-envelope"></i> email@example.com</a></li>
+                        <li><a href="#" class="text-lg font-semibold text-white hover:text-zinc-400"><i class="fa-brands fa-tiktok"></i> @alpimotive</a></li>
+                        <li><a href="#" class="text-lg font-semibold text-white hover:text-zinc-400"><i class="fa-brands fa-instagram"></i> @motivealpi</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="py-4 px-4 bg-zinc-800">
+                <div class="flex justify-center items-center">
+                    <p class="font-sans text-white">Copyright © 2023 Alpi Motive</p>
+                    <p class="font-bold text-gray mx-2">|</p>
+                    <p class="font-sans text-white">Created by:</p>
+                    <a href="https://www.instagram.com/corius.dev/" target="_blank" class="font-bold text-white ml-1">Corius</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+
+    <script src="{% static 'jquery.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'css/fixed-image.css' %}">
+</html>
+
+
