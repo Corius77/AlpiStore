@@ -39,13 +39,13 @@
     </head>
 
     <body>
-        <nav class="py-6 px-6 bg-black flex justify-center">
-            <div class="flex items-center space-x-6">
+        <nav class="py-3 px-3 sm:py-6 sm:px-6 bg-black flex justify-center">
+            <div class="flex items-center space-x-2 sm:space-x-6">
                 <img class="flex-1 text-lg font-semibold text-white pointer-events-none select-none" src="{% static 'images/AlpiLogo.png' %}" alt="logo" width="80" height="80" draggable="false">
-                <a href="{% url 'core:index' %}" class="text-lg font-semibold text-white hover:text-zinc-400">HOME</a>
-                <a href="{% url 'product:list' %}" class="text-lg font-semibold text-white hover:text-zinc-400">PRODUCTS</a>
-                <a href="{% url 'core:index' %}#footer" class="text-lg font-semibold text-white hover:text-zinc-400">ABOUT US</a>
-                <a href="{% url 'core:contact' %}" class="text-lg font-semibold text-white hover:text-zinc-400">CONTACT</a>
+                <a href="{% url 'core:index' %}" class="text-sm sm:text-lg font-semibold text-white hover:text-zinc-400">HOME</a>
+                <a href="{% url 'product:list' %}" class="text-sm sm:text-lg font-semibold text-white hover:text-zinc-400">PRODUCTS</a>
+                <a href="{% url 'core:index' %}#footer" class="text-sm sm:text-lg font-semibold text-white hover:text-zinc-400">ABOUT US</a>
+                <a href="{% url 'core:contact' %}" class="text-sm sm:text-lg font-semibold text-white hover:text-zinc-400">CONTACT</a>
                 <div class="flex justify-between">
                     <a href="{% url 'product:cart' %}" class="text-2xl font-semibold text-white hover:text-zinc-400">
                         <i class="fa-solid fa-cart-shopping"></i>
@@ -67,22 +67,24 @@
             {% endblock %}
 
         <footer id="footer" class="bottom-0 w-full">
-            <div class="py-12 px-12 flex justify-between bg-black flex justify-center">
-                <div class="w-2/3">
-                    <h3 class="text-4xl font-bold text-white text-center mb-10">About us</h3>
+            <div class="py-12 px-12 flex flex-col sm:flex-row justify-center sm:justify-between bg-black">
+                <div class="sm:w-2/3">
+                    <h3 class="text-3xl sm:text-4xl font-bold text-white text-center mb-10">About us</h3>
 
-                    <p class="text-xl text-white">Alpimotive is build for motivating people and let them become the best version of themselves. And it stands for “Alpi” the name of the admin, “motive” for motivation.</p>
+                    <p class="text-lg sm:text-xl text-white">Alpimotive is build for motivating people and let them become the best version of themselves. And it stands for “Alpi” the name of the admin, “motive” for motivation.</p>
                 </div>
 
-                <div>
-                    <img class="flex-1 text-lg font-semibold text-white pointer-events-none mr-40 select-none" src="{% static 'images/AlpiLogo.png' %}" alt="logo" width="150" height="150" draggable="false">
+                <div class="flex justify-center">
+                    <div class="flex flex-col">
+                        <img class="flex-1 text-lg font-semibold text-white pointer-events-none mr-40 select-none" src="{% static 'images/AlpiLogo.png' %}" alt="logo" width="150" height="150" draggable="false">
 
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-lg font-semibold text-white hover:text-zinc-400"><i class="fa-solid fa-phone"></i> (08) 400 200</a></li>
-                        <li><a href="#" class="text-lg font-semibold text-white hover:text-zinc-400"><i class="fa-solid fa-envelope"></i> email@example.com</a></li>
-                        <li><a href="#" class="text-lg font-semibold text-white hover:text-zinc-400"><i class="fa-brands fa-tiktok"></i> @alpimotive</a></li>
-                        <li><a href="#" class="text-lg font-semibold text-white hover:text-zinc-400"><i class="fa-brands fa-instagram"></i> @motivealpi</a></li>
-                    </ul>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-sm sm:text-lg font-semibold text-white hover:text-zinc-400"><i class="fa-solid fa-phone"></i> (08) 400 200</a></li>
+                            <li><a href="#" class="text-sm sm:text-lg font-semibold text-white hover:text-zinc-400"><i class="fa-solid fa-envelope"></i> email@example.com</a></li>
+                            <li><a href="#" class="text-sm sm:text-lg font-semibold text-white hover:text-zinc-400"><i class="fa-brands fa-tiktok"></i> @alpimotive</a></li>
+                            <li><a href="#" class="text-sm sm:text-lg font-semibold text-white hover:text-zinc-400"><i class="fa-brands fa-instagram"></i> @motivealpi</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 

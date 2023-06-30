@@ -9,26 +9,30 @@
       <img class="brightness-75 text-4xl font-bold text-white pointer-events-none" src="{% static 'images/Hero.png' %}" alt="banner">
 
       <div class="absolute inset-0 flex justify-center items-center">
-        <h1 class="text-3xl text-white text-center font-bold">
+        <h1 class="text-lg sm:text-3xl text-white text-center font-bold">
           “Absolutely every single one of my actions is intentional. Divine purpose. If your day is full of mindless action, you act without thought.”
         </h1>
       </div>
     </div>
 
-    <div class="px-6 py-12 bg-gray-100">
-      <div class="grid grid-cols-4 gap-3">
+    <div class="px-3 py-12 sm:px-6 sm:py-12 bg-gray-100">
+      <div class="grid grid-cols-4 gap-2 sm:gap-3">
         {% for product in products %}
-          <div class="flex justify-center">
-            <a class="shadow-lg rounded-b-xl" href="{% url 'product:detail' product.id %}">
-              <div>
-                <img src="{{ product.image.url }}" class="rounded-t-xl pointer-events-none fixed-image" alt="product" draggable="false">
-              </div>
+          <div>
+            <div class="flex justify-center">
+              <div class="flex items-center overflow-hidden aspect-w-3 aspect-h-4 shadow-lg">
+                <a class="rounded-b-xl" href="{% url 'product:detail' product.id %}">
+                  <div>
+                    <img src="{{ product.image.url }}" class="rounded-t-xl pointer-events-none fixed-image" alt="product" draggable="false">
+                  </div>
 
-              <div class="p-4 bg-white rounded-b-xl text-center">
-                <h2 class="text-sm font-bold">{{ product.name }}</h2>
-                <p class="text-gray-500 font-bold">Price: {{ product.currency.symbol }}{{ product.price }}</p>
+                  <div class="p-2 sm:p-4 bg-white rounded-b-xl text-center">
+                    <h2 class="text-xs sm:text-sm font-bold">{{ product.name }}</h2>
+                    <p class="text-xs sm:text-sm text-gray-500 font-bold">Price: {{ product.currency.symbol }}{{ product.price }}</p>
+                  </div>
+                </a>
               </div>
-            </a>
+            </div>
           </div>
         {% endfor %}
       </div>
