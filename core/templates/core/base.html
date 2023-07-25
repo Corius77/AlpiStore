@@ -41,13 +41,13 @@
     <body>
         <nav class="py-3 px-3 sm:py-6 sm:px-6 bg-black flex justify-center">
             <div class="flex items-center space-x-2 sm:space-x-6">
-                <img class="flex-1 text-lg font-semibold text-white pointer-events-none select-none" src="{% static 'images/AlpiLogo.png' %}" alt="logo" width="80" height="80" draggable="false">
-                <a href="{% url 'core:index' %}" class="text-sm sm:text-lg font-semibold text-white hover:text-zinc-400">HOME</a>
-                <a href="{% url 'product:list' %}" class="text-sm sm:text-lg font-semibold text-white hover:text-zinc-400">PRODUCTS</a>
-                <a href="{% url 'core:index' %}#footer" class="text-sm sm:text-lg font-semibold text-white hover:text-zinc-400">ABOUT US</a>
-                <a href="{% url 'core:contact' %}" class="text-sm sm:text-lg font-semibold text-white hover:text-zinc-400">CONTACT</a>
+                <img class="sm:scale-150 flex-1 text-lg font-semibold text-white pointer-events-none select-none" src="{% static 'images/AlpiLogo.png' %}" alt="logo" width="40" height="40" draggable="false">
+                <a href="{% url 'core:index' %}" class="text-xs sm:text-lg font-semibold text-white hover:text-zinc-400">HOME</a>
+                <a href="{% url 'product:list' %}" class="text-xs sm:text-lg font-semibold text-white hover:text-zinc-400">PRODUCTS</a>
+                <a href="{% url 'core:index' %}#footer" class="text-xs sm:text-lg font-semibold text-white hover:text-zinc-400">ABOUT US</a>
+                <a href="{% url 'core:contact' %}" class="text-xs sm:text-lg font-semibold text-white hover:text-zinc-400">CONTACT</a>
                 <div class="flex justify-between">
-                    <a href="{% url 'product:cart' %}" class="text-2xl font-semibold text-white hover:text-zinc-400">
+                    <a href="{% url 'product:cart' %}" class="text-lg sm:text-2xl font-semibold text-white hover:text-zinc-400">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </a>
                     {% if orderitems_count > 0 %}
@@ -74,7 +74,7 @@
                     <p class="text-lg sm:text-xl text-white">Alpimotive is build for motivating people and let them become the best version of themselves. And it stands for “Alpi” the name of the admin, “motive” for motivation.</p>
                 </div>
 
-                <div class="flex justify-center">
+                <div class="flex justify-center translate-x-20 sm:translate-x-0">
                     <div class="flex flex-col">
                         <img class="flex-1 text-lg font-semibold text-white pointer-events-none mr-40 select-none" src="{% static 'images/AlpiLogo.png' %}" alt="logo" width="150" height="150" draggable="false">
 
@@ -88,12 +88,12 @@
                 </div>
             </div>
 
-            <div class="py-4 px-4 bg-zinc-800">
+            <div class="py-2 px-2 sm:py-4 sm:px-4 bg-zinc-800">
                 <div class="flex justify-center items-center">
-                    <p class="font-sans text-white">Copyright © 2023 Alpi Motive</p>
-                    <p class="font-bold text-gray mx-2">|</p>
-                    <p class="font-sans text-white">Created by:</p>
-                    <a href="https://www.instagram.com/corius.dev/" target="_blank" class="font-bold text-white ml-1">Corius</a>
+                    <p class="text-xs sm:text-sm font-sans text-white">Copyright © 2023 Alpi Motive</p>
+                    <p class="text-xs sm:text-smfont-bold text-gray mx-2">|</p>
+                    <p class="text-xs sm:text-sm font-sans text-white">Created by:</p>
+                    <a href="https://www.instagram.com/corius.dev/" target="_blank" class="text-xs sm:text-sm font-bold text-white ml-1">Corius</a>
                 </div>
             </div>
         </footer>

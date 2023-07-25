@@ -223,8 +223,19 @@ def payed_orders(request):
     device = request.COOKIES.get('device')
     orders = Order.objects.filter(payed=True, complete=False)
     orderitems = OrderItem.objects.filter(order__in=orders)
+    order_status = request.POST.get('order_status')
+    orders_count = orders.count()
+
+    if order_status:
+        order_id = int(order_status)
+        order = get_object_or_404(Order, id=order_id)
+
+        order.complete = True
+        order.save()
+
 
     return render(request, 'product/orders.html', {
         'orders': orders,
-        'orderitems': orderitems
+        'orderitems': orderitems,
+        'orders_count': orders_count
     })

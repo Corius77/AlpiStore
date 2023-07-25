@@ -6,7 +6,7 @@
 {% block content %}
         <div class="py-10 bg-zinc-200">
             <div class="flex justify-center">
-                <div class="grid grid-cols-4 gap-10">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-5 sm:gap-10">
                     <div>
                         <button id="category-button" class="text-lg font-bold text-white bg-zinc-400 rounded-xl button-size shadow-md">Category</button>
                         <div id="category-options" class="bg-white rounded-lg shadow-md" style="display: none;">
@@ -102,7 +102,7 @@
             </div>
         </div>
         <div class="flex justify-center mt-20 mb-20">
-            <div class="grid grid-cols-4 gap-10">
+            <div class="grid grid-cols-3 sm:grid-cols-4 gap-10">
                 {% for product in products %}
                 <div>
                     <a href="{% url 'product:detail' product.id %}">
